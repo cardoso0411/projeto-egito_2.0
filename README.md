@@ -1,2 +1,2 @@
-# volta_ao_mundo_egito
-Projeto Volta ao mundo da aula de Desenvolvimento Web 3
+# Volta ao mundo Egito (Antigo) 2.0
+Projeto pessoal que resolvi fazer pegando o trabalho do volta ao mundo egito 1.0
