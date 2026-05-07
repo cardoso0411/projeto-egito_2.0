@@ -36,6 +36,40 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== MODAL DE GALERIA ===== */
+
+.image-modal {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.image-modal.hidden {
+  display: none;
+}
+
+.image-modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Efeito de brilho no hover */
 .shine-effect {
   position: relative;

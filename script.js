@@ -352,3 +352,93 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ========================================
+// MODAL DE GALERIA AMPLIADA
+// ========================================
+
+const imageModal = document.getElementById('image-modal');
+const modalImage = document.getElementById('modal-image');
+const modalCaption = document.getElementById('modal-caption');
+const modalClose = document.getElementById('modal-close');
+const prevImageBtn = document.getElementById('prev-image');
+const nextImageBtn = document.getElementById('next-image');
+const imageCounter = document.getElementById('image-counter');
+
+// Array com todas as imagens da galeria
+const galleryImages = [
+  { src: '/img/tres_piramedes.jpg', alt: 'Pirâmides de Gizé', title: 'Pirâmides de Gizé' },
+  { src: '/img/esfinge.jpg', alt: 'Grande Esfinge', title: 'Grande Esfinge' },
+  { src: '/img/nilo.jpg', alt: 'Rio Nilo', title: 'Rio Nilo' },
+  { src: '/img/valley_of_the_kings.jpg', alt: 'Vale dos Reis', title: 'Vale dos Reis' },
+  { src: '/img/Templo-de-Karnak.jpg', alt: 'Templo de Karnak', title: 'Templo de Karnak' },
+  { src: '/img/templo-abu.jpg', alt: 'Abu Simbel', title: 'Abu Simbel' },
+  { src: '/img/museu-egipcio.jpg', alt: 'Museu Egípcio', title: 'Museu Egípcio' },
+  { src: '/img/templo-luxor.jpg', alt: 'Templo de Luxor', title: 'Templo de Luxor' }
+];
+
+let currentImageIndex = 0;
+
+// Função para abrir o modal
+function openImageModal(index) {
+  currentImageIndex = index;
+  updateModalImage();
+  imageModal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+// Função para fechar o modal
+function closeImageModal() {
+  imageModal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+// Função para atualizar a imagem do modal
+function updateModalImage() {
+  const image = galleryImages[currentImageIndex];
+  modalImage.src = image.src;
+  modalImage.alt = image.alt;
+  modalCaption.textContent = image.title;
+  imageCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+}
+
+// Event listeners dos botões do modal
+modalClose.addEventListener('click', closeImageModal);
+
+prevImageBtn.addEventListener('click', () => {
+  currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateModalImage();
+});
+
+nextImageBtn.addEventListener('click', () => {
+  currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+  updateModalImage();
+});
+
+// Fechar modal ao clicar fora da imagem
+imageModal.addEventListener('click', (e) => {
+  if (e.target === imageModal) {
+    closeImageModal();
+  }
+});
+
+// Navegação com teclas do teclado
+document.addEventListener('keydown', (e) => {
+  if (imageModal.classList.contains('hidden')) return;
+
+  if (e.key === 'ArrowLeft') {
+    prevImageBtn.click();
+  } else if (e.key === 'ArrowRight') {
+    nextImageBtn.click();
+  } else if (e.key === 'Escape') {
+    closeImageModal();
+  }
+});
+
+// Adicionar event listeners aos itens da galeria
+const galleryItems = document.querySelectorAll('.gallery-item');
+galleryItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    openImageModal(index);
+  });
+});
