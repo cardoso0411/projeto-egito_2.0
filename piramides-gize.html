@@ -53,8 +53,21 @@
     }
   </script><!-- ========== ESTILOS CSS PERSONALIZADOS ========== -->
   <link rel="stylesheet" href="styles.css"><!-- ========== ELEMENT SDK ========== -->
+  <style>
+    .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+  </style>
   <script src="/_sdk/element_sdk.js"></script>
-  <style>body { box-sizing: border-box; }</style>
+  <style>
+    body { box-sizing: border-box; }
+    .animated-hero {
+      animation: float 10s ease-in-out infinite;
+      transform-origin: center center;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.02); }
+    }
+  </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-egypt-dark text-sand-100 overflow-x-hidden"><!-- ============================================================
@@ -138,11 +151,14 @@
        </div>
       </div>
       <div class="relative">
-       <div class="aspect-video bg-gradient-to-br from-gold-600/20 to-gold-800/20 rounded-2xl flex items-center justify-center border border-gold-600/20">
-        <div class="text-center">
-         <div class="text-8xl mb-4">🔺</div>
-         <p class="text-sand-300">Tour Virtual 360°</p>
-         <p class="text-sm text-sand-400 mt-2">Em breve disponível</p>
+       <div class="aspect-video rounded-2xl overflow-hidden border border-gold-600/20 shadow-xl">
+        <img src="img/tres_piramedes.jpg" alt="Pirâmides de Gizé animadas" class="w-full h-full object-cover animated-hero">
+        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+         <div class="text-center px-6">
+          <div class="text-6xl mb-3">🔺</div>
+          <p class="text-sand-100 text-lg font-semibold">Tour Virtual 360°</p>
+          <p class="text-sm text-sand-200 mt-2">Em breve disponível</p>
+         </div>
         </div>
        </div>
       </div>
