@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -77,8 +78,41 @@
        </div>
       </div>
       <div class="relative">
-       <div class="aspect-video bg-gradient-to-br from-orange-600/20 to-orange-800/20 rounded-2xl flex items-center justify-center border border-gold-600/20">
-        <div class="text-center"><div class="text-8xl mb-4">🏛️</div><p class="text-sand-300">Reconstrução 3D</p><p class="text-sm text-sand-400 mt-2">Veja o templo como era</p></div>
+       <div class="aspect-video bg-gradient-to-br from-orange-600/20 to-orange-800/20 rounded-2xl overflow-hidden border border-gold-600/20">
+        <a-scene embedded style="width: 100%; height: 100%;">
+         <!-- Câmera -->
+         <a-camera position="0 5 10" look-controls="enabled: true"></a-camera>
+
+         <!-- Luzes -->
+         <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+         <a-light type="directional" color="#ffd700" intensity="1" position="10 10 5"></a-light>
+
+         <!-- Chão do templo -->
+         <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#d4a574"></a-plane>
+
+         <!-- Pilares principais com animação -->
+         <a-cylinder position="-3 2 0" radius="0.5" height="4" color="#8b4513" animation="property: rotation; to: 0 360 0; dur: 10000; loop: true"></a-cylinder>
+         <a-cylinder position="3 2 0" radius="0.5" height="4" color="#8b4513" animation="property: rotation; to: 0 -360 0; dur: 12000; loop: true"></a-cylinder>
+         <a-cylinder position="0 2 -3" radius="0.5" height="4" color="#8b4513" animation="property: rotation; to: 0 360 0; dur: 8000; loop: true"></a-cylinder>
+         <a-cylinder position="0 2 3" radius="0.5" height="4" color="#8b4513" animation="property: rotation; to: 0 -360 0; dur: 15000; loop: true"></a-cylinder>
+
+         <!-- Obeliscos -->
+         <a-box position="-5 3 0" width="0.3" height="6" depth="0.3" color="#daa520"></a-box>
+         <a-box position="5 3 0" width="0.3" height="6" depth="0.3" color="#daa520"></a-box>
+
+         <!-- Estrutura central (representando o templo) -->
+         <a-box position="0 1.5 0" width="4" height="3" depth="2" color="#a0522d"></a-box>
+
+         <!-- Hieroglifos decorativos (simples) -->
+         <a-text position="-2 3.5 1" value="𓇳" color="#ffd700" align="center" font="mozillavr"></a-text>
+         <a-text position="2 3.5 1" value="𓃭" color="#ffd700" align="center" font="mozillavr"></a-text>
+
+         <!-- Texto informativo -->
+         <a-text position="0 6 0" value="Templo de Karnak - Reconstrução 3D" color="#f4e9cd" align="center" font="mozillavr" scale="0.5 0.5 0.5"></a-text>
+        </a-scene>
+       </div>
+       <div class="absolute bottom-4 left-4 text-sand-300 text-sm">
+        <p>🖱️ Clique e arraste para explorar • 📱 Toque para interagir</p>
        </div>
       </div>
      </div>
@@ -95,35 +129,49 @@
       <div class="bg-egypt-navy/50 rounded-2xl p-8 border border-gold-600/20">
        <h3 class="font-title text-xl font-semibold text-gold-400 mb-4">Clique nos Símbolos</h3>
        <div class="grid grid-cols-6 gap-4 text-center">
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓀀" data-name="Homem" data-description="Representa um homem ou pessoa masculina. É um dos símbolos mais básicos da escrita hieroglífica." data-pronunciation="Ah">
          <div class="text-4xl mb-2">𓀀</div>
          <p class="text-xs text-sand-400">Homem</p>
         </div>
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓁐" data-name="Mulher" data-description="Representa uma mulher ou pessoa feminina. O símbolo mostra uma mulher sentada." data-pronunciation="Het">
          <div class="text-4xl mb-2">𓁐</div>
          <p class="text-xs text-sand-400">Mulher</p>
         </div>
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓃭" data-name="Deus" data-description="Representa divindades ou seres sagrados. Frequentemente usado para deuses egípcios." data-pronunciation="Netjer">
          <div class="text-4xl mb-2">𓃭</div>
          <p class="text-xs text-sand-400">Deus</p>
         </div>
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓆣" data-name="Faraó" data-description="Representa o faraó ou rei. Combina símbolos de autoridade e poder." data-pronunciation="Per-aa">
          <div class="text-4xl mb-2">𓆣</div>
          <p class="text-xs text-sand-400">Faraó</p>
         </div>
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓇳" data-name="Sol" data-description="Representa o sol, luz e divindade solar. Central na mitologia egípcia." data-pronunciation="Ra">
          <div class="text-4xl mb-2">𓇳</div>
          <p class="text-xs text-sand-400">Sol</p>
         </div>
-        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors">
+        <div class="cursor-pointer hover:bg-gold-600/20 p-4 rounded-xl transition-colors symbol-item" data-symbol="𓊽" data-name="Água" data-description="Representa água, líquido e fertilidade. Associado ao Nilo." data-pronunciation="Mu">
          <div class="text-4xl mb-2">𓊽</div>
          <p class="text-xs text-sand-400">Água</p>
         </div>
        </div>
       </div>
+
+      <!-- Modal para detalhes do símbolo -->
+      <div id="symbol-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+       <div class="bg-egypt-navy rounded-2xl p-8 max-w-md w-full border border-gold-600/20">
+        <div class="text-center mb-6">
+         <div id="modal-symbol" class="text-6xl mb-4"></div>
+         <h3 id="modal-name" class="font-title text-2xl font-semibold text-gold-400 mb-2"></h3>
+         <p id="modal-pronunciation" class="text-sand-300 text-sm mb-4"></p>
+        </div>
+        <p id="modal-description" class="text-sand-200 leading-relaxed mb-6"></p>
+        <button id="close-modal" class="w-full bg-gold-600 text-egypt-dark px-6 py-3 rounded-full font-semibold hover:bg-gold-500 transition-colors">Fechar</button>
+       </div>
+      </div>
      </div>
     </div>
    </section>
+
 
    <section class="py-12 bg-egypt-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -141,5 +189,45 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Funcionalidade do modal de símbolos hieroglíficos
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('symbol-modal');
+      const modalSymbol = document.getElementById('modal-symbol');
+      const modalName = document.getElementById('modal-name');
+      const modalPronunciation = document.getElementById('modal-pronunciation');
+      const modalDescription = document.getElementById('modal-description');
+      const closeModal = document.getElementById('close-modal');
+
+      // Adicionar event listeners aos símbolos
+      document.querySelectorAll('.symbol-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const symbol = this.dataset.symbol;
+          const name = this.dataset.name;
+          const description = this.dataset.description;
+          const pronunciation = this.dataset.pronunciation;
+
+          modalSymbol.textContent = symbol;
+          modalName.textContent = name;
+          modalPronunciation.textContent = `Pronúncia aproximada: ${pronunciation}`;
+          modalDescription.textContent = description;
+
+          modal.classList.remove('hidden');
+        });
+      });
+
+      // Fechar modal
+      closeModal.addEventListener('click', function() {
+        modal.classList.add('hidden');
+      });
+
+      // Fechar modal ao clicar fora
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
  </body>
 </html>
