@@ -367,14 +367,15 @@ const imageCounter = document.getElementById('image-counter');
 
 // Array com todas as imagens da galeria
 const galleryImages = [
-  { src: '/img/tres_piramedes.jpg', alt: 'Pirâmides de Gizé', title: 'Pirâmides de Gizé' },
-  { src: '/img/esfinge.jpg', alt: 'Grande Esfinge', title: 'Grande Esfinge' },
-  { src: '/img/nilo.jpg', alt: 'Rio Nilo', title: 'Rio Nilo' },
-  { src: '/img/valley_of_the_kings.jpg', alt: 'Vale dos Reis', title: 'Vale dos Reis' },
-  { src: '/img/Templo-de-Karnak.jpg', alt: 'Templo de Karnak', title: 'Templo de Karnak' },
-  { src: '/img/templo-abu.jpg', alt: 'Abu Simbel', title: 'Abu Simbel' },
-  { src: '/img/museu-egipcio.jpg', alt: 'Museu Egípcio', title: 'Museu Egípcio' },
-  { src: '/img/templo-luxor.jpg', alt: 'Templo de Luxor', title: 'Templo de Luxor' }
+  { src: 'img/tres_piramedes.jpg', alt: 'Pirâmides de Gizé', title: 'Pirâmides de Gizé' },
+  { src: 'img/esfinge.jpg', alt: 'Grande Esfinge', title: 'Grande Esfinge' },
+  { src: 'img/nilo.jpg', alt: 'Rio Nilo', title: 'Rio Nilo' },
+  { src: 'img/valley_of_the_kings.jpg', alt: 'Vale dos Reis', title: 'Vale dos Reis' },
+  { src: 'img/Templo-de-Karnak.jpg', alt: 'Templo de Karnak', title: 'Templo de Karnak' },
+  { src: 'img/templo-abu.jpg', alt: 'Abu Simbel', title: 'Abu Simbel' },
+  { src: 'img/museu-egipcio.jpg', alt: 'Museu Egípcio', title: 'Museu Egípcio' },
+  { src: 'img/templo-luxor.jpg', alt: 'Templo de Luxor', title: 'Templo de Luxor' },
+  { src: 'img/interior-piramide.jpg', alt: 'Interior da Grande Pirâmide', title: 'Interior da Grande Pirâmide' },
 ];
 
 let currentImageIndex = 0;
@@ -385,7 +386,10 @@ function openImageModal(index) {
   updateModalImage();
   imageModal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+
 }
+
+
 
 // Função para fechar o modal
 function closeImageModal() {
