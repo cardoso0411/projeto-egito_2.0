@@ -48,7 +48,7 @@
     <div class="max-w-4xl w-full glass-panel glow-border rounded-[36px] p-10 shadow-[0_30px_80px_rgba(0,0,0,0.45)] opacity-0">
       <div class="flex flex-col items-center text-center gap-5">
         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#d4a419] to-[#f5b60d] text-[#08151d] text-4xl shadow-[0_0_40px_rgba(249,215,97,0.22)]">⚡</div>
-        <span class="gta-tag">GTA MODE</span>
+        <span class="gta-tag">easter egg</span>
         <h1 class="hero-title game-font text-4xl md:text-5xl text-gold-300 leading-tight opacity-0">Chegou no Mapa Interativo do Egito</h1>
         <p class="hero-desc max-w-3xl text-sand-200 text-base md:text-lg leading-relaxed opacity-0">Você estava em outra página e agarrou esse link? Parabéns, acabou de iniciar a missão mais zueira do site. Aqui não tem tutorial, só faroeste no deserto, cara livre como no GTA e com direito a faróis do faraó piscando.</p>
       </div>
@@ -86,7 +86,7 @@
         <a href="index.html" class="cta-btn gta-btn inline-flex min-w-[180px] items-center justify-center rounded-full px-8 py-4 text-sm font-bold transition hover:scale-[1.02]">Voltar pro rolê</a>
         <button id="continue-button" class="cta-btn gta-secondary inline-flex min-w-[180px] items-center justify-center rounded-full px-8 py-4 text-sm font-semibold transition hover:scale-[1.02]">Continuar na zueira</button>
       </div>
-      <p class="mt-10 text-sand-500 text-sm text-center opacity-0">P.S.: esse mapa interativo é só zoeira nível GTA 5 — se o faraó aparecer, manda um “ronaldinho” e segue o jogo.</p>
+      <p class="mt-10 text-sand-500 text-sm text-center opacity-0">P.S.: esse mapa interativo é só zoeira nível GTA — se o faraó aparecer, manda um “ronaldinho” e segue o jogo.</p>
     </div>
   </section>
 
@@ -143,6 +143,10 @@
           background: '#111f34',
           color: '#f5e6d3',
           confirmButtonColor: '#d4a419'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = 'https://www.youtube.com/shorts/Dbbq-s5vubQ';
+          }
         });
       });
 
