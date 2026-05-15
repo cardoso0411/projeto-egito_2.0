@@ -10,7 +10,7 @@ O site apresenta uma experiência temática de viagem ao Egito, com páginas ded
 
 O projeto está disponível no GitHub Pages:
 
-https://seu-usuario.github.io/projeto-egito_2.0/
+https://cardoso0411.github.io/projeto-egito_2.0/
 
 ## Estrutura do projeto
 
