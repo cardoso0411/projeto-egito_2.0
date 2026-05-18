@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   
-  <!-- ========== CONFIGURAÇÃO DO TAILWIND ========== -->
+  <!-- CONFIGURAÇÃO DO TAILWIND -->
   <script>
     tailwind.config = {
       theme: {
@@ -55,16 +55,15 @@
     }
   </script>
   
-  <!-- ========== ESTILOS CSS PERSONALIZADOS ========== -->
+  <!-- ESTILOS CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- ========== ELEMENT SDK ========== -->
   <script src="/_sdk/element_sdk.js"></script>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-egypt-dark text-sand-100 overflow-x-hidden">
   
-  <!--HEADER - Navegação Principal-->
+  <!-- HEADER - Navegação Principal -->
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
@@ -98,7 +97,6 @@
     </div>
    </div>
   </header>
-  <!-- Overlay do menu mobile -->
   <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
   
   <!--MAIN - Conteúdo Principal -->
@@ -142,7 +140,6 @@
       <h2 class="font-title text-4xl md:text-5xl font-bold text-sand-100 mt-4 mb-6">História do Egito</h2>
       <div class="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full"></div>
      </div>
-     <!-- Introdução -->
      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20 fade-in">
       <div>
        <h3 class="font-title text-2xl font-semibold text-gold-400 mb-4">Uma Civilização Milenar</h3>
@@ -172,7 +169,7 @@
      <!-- Timeline dos Períodos -->
      <div class="fade-in">
       <h3 class="font-title text-2xl font-semibold text-gold-400 mb-8 text-center">Principais Períodos</h3>
-      <div class="relative max-w-3xl mx-auto"><!-- Linha vertical -->
+      <div class="relative max-w-3xl mx-auto">
        <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500 to-gold-700"></div>
        <!-- Items da timeline -->
        <div class="space-y-8 pl-16">
@@ -198,7 +195,7 @@
     </div>
    </section>
    
-   <!-- ===== SEÇÃO PONTOS TURÍSTICOS ===== -->
+   <!-- SEÇÃO PONTOS TURÍSTICOS -->
    <section id="pontos-turisticos" class="py-20 bg-egypt-navy egypt-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16 fade-in"><span class="text-gold-500 font-medium tracking-widest uppercase">Destinos Incríveis</span>
@@ -277,7 +274,7 @@
     </div>
    </section>
    
-   <!-- ===== SEÇÃO CULTURA ===== -->
+   <!-- SEÇÃO CULTURA -->
    <section id="cultura" class="py-20 bg-gradient-to-b from-egypt-navy to-egypt-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16 fade-in"><span class="text-gold-500 font-medium tracking-widest uppercase">Tradições Milenares</span>
@@ -401,7 +398,7 @@
     </div>
    </section>
    
-   <!-- ===== SEÇÃO GALERIA ===== -->
+   <!-- SEÇÃO GALERIA -->
    <section id="galeria" class="py-20 bg-egypt-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16 fade-in"><span class="text-gold-500 font-medium tracking-widest uppercase">Imagens Inspiradoras</span>
@@ -462,7 +459,7 @@
     </div>
    </section>
    
-   <!-- ===== SEÇÃO CURIOSIDADES ===== -->
+   <!-- SEÇÃO CURIOSIDADES -->
    <section id="curiosidades" class="py-20 bg-gradient-to-b from-egypt-dark to-egypt-navy egypt-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16 fade-in"><span class="text-gold-500 font-medium tracking-widest uppercase">Você Sabia?</span>
@@ -523,13 +520,14 @@
     </div>
    </section>
    
-   <!-- ===== SEÇÃO CONTATO ===== -->
+   <!-- SEÇÃO CONTATO -->
    <section id="contato" class="py-20 bg-egypt-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-16 fade-in"><span class="text-gold-500 font-medium tracking-widest uppercase">Fale Conosco</span>
       <h2 id="contact-title" class="font-title text-4xl md:text-5xl font-bold text-sand-100 mt-4 mb-6">Entre em Contato</h2>
       <div class="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full"></div>
      </div>
+     
      <!-- Formulário de Contato -->
      <div class="bg-gradient-to-br from-sand-900/20 to-egypt-dark rounded-2xl p-8 border border-gold-600/20 fade-in">
       <form id="contact-form" class="space-y-6">
@@ -559,7 +557,7 @@
     </div>
    </section>
    
-   <!-- ===== MODAL DE GALERIA AMPLIADA ===== -->
+   <!-- MODAL DE GALERIA AMPLIADA -->
    <div id="image-modal" class="image-modal hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
     <div class="image-modal-content relative max-w-4xl w-full max-h-screen flex flex-col">
      <!-- Botão fechar -->
@@ -591,7 +589,7 @@
    </div>
   </main>
   
-  <!-- ===== RODAPÉ ===== -->
+  <!-- RODAPÉ -->
   <footer class="bg-egypt-dark border-t border-gold-600/20">
    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid md:grid-cols-3 gap-8 mb-8">
@@ -603,6 +601,7 @@
       </div>
       <p class="text-sand-400 text-sm">Projeto educacional sobre a fascinante civilização do Antigo Egito. Desenvolvido para o 4º semestre de Desenvolvimento Web.</p>
      </div>
+     
      <!-- Estatísticas do Site -->
      <div>
       <h4 class="font-title text-lg font-semibold text-sand-100 mb-4">📊 Conteúdo do Site</h4>
@@ -625,6 +624,7 @@
        </div>
       </div>
      </div>
+     
      <!-- Contato -->
      <div>
       <h4 class="font-title text-lg font-semibold text-sand-100 mb-4">Projeto Acadêmico</h4>
@@ -642,6 +642,7 @@
    </div>
   </footer>
 
+<!-- SCRIPTS do site para funcionalidades do index -->
  <script src="script.js"></script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f7c2698b4d4f1d6',t:'MTc3ODExNDE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

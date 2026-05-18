@@ -6,25 +6,45 @@
   <title>Mapa Interativo | Missão Zueira</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-VPrqqJ6S8qgV4cY4nH49l3HzDtJbI0GkqqH4+O4zORz5kpHhc3TjWnE2+fTfY0Tox1nK3y8OeZ1XcGStrVv4Zw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Tailwind CSS via CDN: utilitários prontos de layout, espaçamento, cor, responsividade etc. -->
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <style>
+    /* Define a tipografia base da página e aplica box-sizing para facilitar cálculo de largura/altura. */
     body { box-sizing: border-box; font-family: 'Lato', sans-serif; }
+    /* Container do fundo animado (Vanta): fixo, cobre toda a tela e fica atrás do conteúdo. */
     #vanta-bg { position: fixed; inset: 0; z-index: -1; }
+    /* Fonte temática (estilo retrô de game) para títulos e destaques. */
     .game-font { font-family: 'Press Start 2P', cursive; }
+    /* Efeito "vidro": fundo semi-transparente + blur no que está atrás do painel. */
     .glass-panel { background: rgba(8, 15, 30, 0.88); backdrop-filter: blur(24px); }
+    /* Borda dourada com transparência para realçar cards/painéis. */
     .glow-border { border: 1px solid rgba(212, 164, 25, 0.55); }
+    /* Sombra no texto para efeito de brilho (glow). */
     .text-glow { text-shadow: 0 0 18px rgba(212, 164, 25, 0.45); }
+    /* Botão de música fixo no canto superior direito, acima dos outros elementos. */
     .sound-chip { position: fixed; top: 1rem; right: 1rem; z-index: 20; }
+    /* Faz o botão interno herdar a fonte do elemento pai. */
     .sound-chip button { font-family: inherit; }
+    /* Estilo visual do botão primário (gradiente dourado, sombra, contraste alto). */
     .gta-btn { background: linear-gradient(135deg, #f7d244 0%, #e0b218 100%); color: #08151d; box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); }
+    /* Feedback de hover: eleva levemente o botão no eixo Y. */
     .gta-btn:hover { transform: translateY(-2px); }
+    /* Estilo visual do botão secundário (menos destaque que o primário). */
     .gta-secondary { background: rgba(255, 255, 255, 0.06); color: #f5e6d3; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15); }
+    /* Hover do secundário: aumenta opacidade do fundo para indicar interação. */
     .gta-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+    /* Painel tipo HUD: fundo escuro translúcido + borda e detalhe interno. */
     .hud-panel { background: rgba(5, 10, 20, 0.78); border: 1px solid rgba(212, 164, 25, 0.18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03); }
+    /* "Pílula" de status: flex centralizado, cantos arredondados e texto técnico. */
     .hud-pill { display: inline-flex; align-items: center; justify-content: center; padding: 0.6rem 1rem; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #ddd; }
+    /* Tag com tracking maior para estilo "interface de jogo". */
     .gta-tag { letter-spacing: 0.35em; text-transform: uppercase; color: #b19c51; font-size: 0.72rem; }
+    /* Cor e brilho para notas de destaque no herói. */
     .gta-hero-note { color: #f9d761; text-shadow: 0 0 12px rgba(249, 215, 97, 0.4); }
+    /* Cartão com fundo escuro e borda leve para separar blocos de texto. */
     .gta-card { border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(12, 20, 35, 0.95); }
+    /* Ajustes finos de legibilidade: espaçamento entre letras no título e descrição. */
     .hero-title { letter-spacing: 0.04em; }
     .hero-desc { letter-spacing: 0.01em; }
 
@@ -42,9 +62,13 @@
   </style>
 </head>
 <body class="h-full bg-[#08151d] text-sand-100 overflow-x-hidden">
+  <!-- Camada onde a biblioteca Vanta desenha o fundo animado em canvas/WebGL. -->
   <div id="vanta-bg"></div>
+  <!-- Botão que liga/desliga a música de fundo. -->
   <button id="music-toggle" class="sound-chip gta-secondary inline-flex items-center justify-center rounded-full px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] transition hover:bg-white/10">Música: OFF</button>
+  <!-- Seção principal ocupando no mínimo a altura da viewport, com conteúdo centralizado. -->
   <section class="min-h-screen flex items-center justify-center px-4 py-16">
+    <!-- Painel principal começa invisível (opacity-0) para entrar com animação no JS. -->
     <div class="max-w-4xl w-full glass-panel glow-border rounded-[36px] p-10 shadow-[0_30px_80px_rgba(0,0,0,0.45)] opacity-0">
       <div class="flex flex-col items-center text-center gap-5">
         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#d4a419] to-[#f5b60d] text-[#08151d] text-4xl shadow-[0_0_40px_rgba(249,215,97,0.22)]">⚡</div>
@@ -90,13 +114,20 @@
     </div>
   </section>
 
+  <!-- three.js: base 3D/WebGL usada internamente pela Vanta para o fundo animado. -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <!-- Vanta NET: efeito visual de linhas/pontos conectados no background. -->
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <!-- Howler.js: abstrai reprodução de áudio no navegador (play/pause/loop/eventos). -->
   <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+  <!-- SweetAlert2: modais mais amigáveis que alert() nativo do navegador. -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- anime.js: biblioteca para animações declarativas e timelines. -->
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script>
+    // Espera o DOM carregar para garantir que os elementos já existam no momento da seleção.
     document.addEventListener('DOMContentLoaded', () => {
+      // Instância de áudio de fundo com loop.
       const sound = new Howl({
         src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
         loop: true,
@@ -105,20 +136,26 @@
         preload: true
       });
 
+      // Em alguns navegadores, autoplay é bloqueado até interação do usuário.
+      // Quando houver unlock do áudio, tenta tocar novamente.
       sound.on('playerror', () => {
         sound.once('unlock', () => {
           sound.play();
         });
       });
 
+      // Referências aos elementos de UI que serão manipulados no JS.
       const musicToggle = document.getElementById('music-toggle');
       const continueButton = document.getElementById('continue-button');
+      // Estado local para saber se a música está ativa.
       let musicEnabled = false;
 
+      // Sincroniza o texto do botão com o estado da música.
       const updateSoundButton = () => {
         musicToggle.textContent = musicEnabled ? 'Música: ON' : 'Música: OFF';
       };
 
+      // Alterna estado da música e executa play/pause.
       const toggleMusic = () => {
         musicEnabled = !musicEnabled;
         if (musicEnabled) {
@@ -129,11 +166,13 @@
         updateSoundButton();
       };
 
+      // Clique no botão de música: impede propagação para não disparar outros listeners globais.
       musicToggle.addEventListener('click', (event) => {
         event.stopPropagation();
         toggleMusic();
       });
 
+      // Clique no botão "continuar": abre modal e, se confirmado, redireciona.
       continueButton.addEventListener('click', () => {
         Swal.fire({
           title: 'Zoeira Continuada!',
@@ -150,6 +189,8 @@
         });
       });
 
+      // Primeiro clique em qualquer lugar da página inicia música (once: true executa só uma vez).
+      // Isso contorna políticas de autoplay de navegadores.
       document.addEventListener('click', () => {
         if (!musicEnabled) {
           musicEnabled = true;
@@ -158,6 +199,7 @@
         }
       }, { once: true });
 
+      // Inicializa o fundo animado e configura parâmetros de interação e aparência.
       VANTA.NET({
         el: '#vanta-bg',
         mouseControls: true,
@@ -173,6 +215,7 @@
         spacing: 16.00
       });
 
+      // Timeline: encadeia animações de entrada para criar narrativa visual.
       anime.timeline({
         easing: 'easeOutExpo',
         duration: 900
@@ -199,6 +242,7 @@
         delay: anime.stagger(120)
       }, '-=600');
 
+      // Animação contínua de "respiração" nos botões CTA para atrair atenção do usuário.
       anime({
         targets: '.cta-btn',
         scale: [1, 1.05, 1],
