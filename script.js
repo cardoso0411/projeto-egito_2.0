@@ -248,9 +248,6 @@ saibaMaisBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     const card = this.closest('article');
     const title = card.querySelector('h3').textContent;
-
-    // Criar e mostrar toast de notificação
-    showToast(`Mais informações sobre ${title} em breve!`);
   });
 });
 
@@ -306,9 +303,6 @@ contactForm.addEventListener('submit', function(e) {
     // Esconder formulário e mostrar mensagem de sucesso
     contactForm.classList.add('hidden');
     successMessage.classList.remove('hidden');
-
-    // Mostrar toast
-    showToast('Mensagem enviada com sucesso! 🎉');
 
     // Resetar formulário após alguns segundos
     setTimeout(() => {
